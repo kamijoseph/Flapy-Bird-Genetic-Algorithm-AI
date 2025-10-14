@@ -1,0 +1,1 @@
+# genetic algorithm ai plays a simple version of flappy bird
