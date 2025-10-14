@@ -10,7 +10,7 @@ FPS = 60
 
 def quit_game():
     for event in pygame.event.get():
-        if event.type == "QUIT":
+        if event.type == pygame.QUIT:
             pygame.quit()
             exit()
 
@@ -18,8 +18,11 @@ def main():
     while True:
         quit_game()
         config.window.fill((0, 0, 0))
+
+        # ground
+        config.ground.draw(config.window)
+
         clock.tick(FPS)
         pygame.display.flip()
         
-if __name__ == "__main__":
-    main()
+main()
