@@ -3,9 +3,11 @@ import pygame
 from sys import exit
 import config
 import components
+import population
 
 pygame.init()
 clock = pygame.time.Clock()
+population = population.Population()
 
 FPS = 60
 
@@ -40,6 +42,9 @@ def main():
             pipe.update()
             if pipe.off_screen:
                 config.pipes.remove(pipe)
+        
+        # player/s
+        population.update_live_players()
 
         clock.tick(FPS)
         pygame.display.flip()
