@@ -7,3 +7,6 @@ window = pygame.display.set_mode((win_width, win_height))
 
 # ground object from the components
 ground = components.Ground(win_width)
+
+# store pipes
+pipes = []
