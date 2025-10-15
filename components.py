@@ -18,7 +18,7 @@ class Ground:
 
 # pipes class
 class Pipes:
-    width = 15,
+    width = 15
     opening = 100
 
     def __init__(self, win_width):
