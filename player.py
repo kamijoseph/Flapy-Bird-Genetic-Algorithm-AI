@@ -35,8 +35,7 @@ class Player:
     # pipe collision
     def pipe_collision(self):
         for pipe in config.pipes:
-            return pygame.Rect.colliderect(self.rect, pipe.top_rect) or \
-                pygame.Rect.colliderect(self.rect, pipe.bottom_rect)
+            return pygame.Rect.colliderect(self.rect, pipe.top_rect) or pygame.Rect.colliderect(self.rect, pipe.bottom_rect)
         
     def update(self, ground):
         if not (self.ground_collision(ground) or self.pipe_collision()):
@@ -45,10 +44,10 @@ class Player:
             self.rect.y += self.vel
             if self.vel > 5:
                 self.vel = 5
-            else:
-                self.alive = False
-                self.flap = False
-                self.vel = 0
+        else:
+            self.alive = False
+            self.flap = False
+            self.vel = 0
     
     # bird flapping and flight
     def bird_flap(self):
