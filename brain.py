@@ -46,3 +46,19 @@ class Brain:
             for i in range(0, len(self.nodes)):
                 if self.nodes[i].layer == j:
                     self.net.append(self.nodes[i])
+    
+    def feed_forward(self, vision):
+        for i in range(0, self.inputs):
+            self.nodes[i].output_value = vision[i]
+        
+        self.nodes[3].output_value = 1
+
+        for i in range(0, len(self.net)):
+            self.net[i].activate()
+        
+        output_value = self.nodes[4].output_value
+
+        for i in range(0, len(self.nodes)):
+            self.nodes[i].input_value = 0
+
+        return output_value
