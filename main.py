@@ -7,7 +7,7 @@ import population
 
 pygame.init()
 clock = pygame.time.Clock()
-population = population.Population()
+population = population.Population(100)
 
 FPS = 60
 
@@ -42,9 +42,12 @@ def main():
             pipe.update()
             if pipe.off_screen:
                 config.pipes.remove(pipe)
-        
-        # player/s
-        population.update_live_players()
+
+        if not population.extinct():
+            # player/s
+            population.update_live_players()
+        else:
+            pass
 
         clock.tick(FPS)
         pygame.display.flip()
