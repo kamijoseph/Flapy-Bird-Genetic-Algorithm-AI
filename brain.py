@@ -30,3 +30,13 @@ class Brain:
             self.connections.append(connection.Connection(
                 self.nodes[i], self.nodes[4], random.uniform(-1, 1)
             ))
+
+    def connect_nodes(self):
+        for i in range(0, len(self.nodes)):
+            self.nodes[i].connections = []
+        
+        for i in range(0, len(self.connections)):
+            self.connections[i].from_node.connections.append(self.connections[i])
+
+    def generate_network(self):
+        pass
