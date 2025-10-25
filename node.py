@@ -1,5 +1,5 @@
 
-# nodes
+# nodes of the neural net
 import math
 
 class Node:

@@ -1,5 +1,5 @@
 
-# the neural network
+# tthe connections of the neural net
 class Connection:
     def __init__(self, from_node, to_node, weight):
         self.from_node = from_node
