@@ -38,5 +38,11 @@ class Brain:
         for i in range(0, len(self.connections)):
             self.connections[i].from_node.connections.append(self.connections[i])
 
-    def generate_network(self):
-        pass
+    def generate_net(self):
+        self.connect_nodes()
+        self.net = []
+
+        for j in range(0, self.layers):
+            for i in range(0, len(self.nodes)):
+                if self.nodes[i].layer == j:
+                    self.net.append(self.nodes[i])
