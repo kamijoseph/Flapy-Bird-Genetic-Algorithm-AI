@@ -26,4 +26,22 @@ class Species:
                     total_weight_difference += abs(
                         brain_1.connections[i].weight - brain_2.connections[j].weight
                     )
-                    return total_weight_difference
+        return total_weight_difference
+    
+    def add_to_species(self, player):
+        self.players.sort(
+            key = operator.attrgetter("fitness"),
+            reverse = True
+        )
+        if self.players[0].fitness > self.benchmark_fitness:
+            self.benchmark_fitness = self.players[0].fitness
+            self.champion = self.players[0].clone()
+    
+    def calculate_average_fitness(self):
+        total_fitness = 0
+        for player in self.players:
+            total_fitness += player.fitness
+        if self.players:
+            self.average_fitness = int(total_fitness / len(self.players))
+        else:
+            self.average_fitness = 0
