@@ -43,7 +43,8 @@ class Population:
             add_to_species = False
             for specie in self.species:
                 if specie.similarity(player.brain):
-                    specie.add_to_species = True
+                    specie.add_to_species(player)
+                    add_to_species = True
                     break
             if not add_to_species:
                 self.species.append(species.Species(player))
@@ -72,7 +73,7 @@ class Population:
 
         # filling open player slots with children
         children_per_species = math.floor(
-            (self.size - len(self.species)) // len(self.species)
+            (self.size - len(self.species)) / len(self.species)
         )
         for specie in self.species:
             for i in range(0, children_per_species):

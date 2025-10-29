@@ -113,8 +113,8 @@ class Player:
         self.fitness = self.lifespan
 
     def clone(self):
-        clone = Player
+        clone = Player()
         clone.fitness = self.fitness
         clone.brain = self.brain.clone()
-        self.brain.generate_net()
+        clone.brain.generate_net()
         return clone

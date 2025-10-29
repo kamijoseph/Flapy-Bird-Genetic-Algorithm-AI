@@ -87,6 +87,6 @@ class Brain:
     def mutate(self):
         if random.uniform(0, 1) < 0.8:
             for i in range(0, len(self.connections)):
-                self.connections[i].mutate_weight()
+                self.connections[i].mutate_weights()
             
 

@@ -29,6 +29,9 @@ class Species:
         return total_weight_difference
     
     def add_to_species(self, player):
+        self.players.append(player)
+    
+    def sort_players_by_fitness(self):
         self.players.sort(
             key = operator.attrgetter("fitness"),
             reverse = True
