@@ -45,3 +45,8 @@ class Species:
             self.average_fitness = int(total_fitness / len(self.players))
         else:
             self.average_fitness = 0
+    
+    def offspring(self):
+        baby = self.players[random.randint(1, len(self.players)) - 1].clone()
+        baby.brain.mutate()
+        return baby
