@@ -47,7 +47,8 @@ def main():
             # player/s
             population.update_live_players()
         else:
-            pass
+            config.pipes.clear()
+            population.natural_selection()
 
         clock.tick(FPS)
         pygame.display.flip()
