@@ -48,6 +48,44 @@ class Population:
             if not add_to_species:
                 self.species.append(species.Species(player))
     
+    def calculate_fitness(self):
+        for player in self.players:
+            player.calculate_fitness()
+        for specie in self.species:
+            specie.calculate_average_fitness()
+    
+    def sort_species_by_fitness(self):
+        for specie in self.species:
+            specie.sort_players_by_fitness()
+
+        self.species.sort(
+            key = operator.attrgetter("benchmark_fitness"),
+            reverse = True
+        )
+    
+    def next_gen(self):
+        children = []
+
+        # cloning champion of each species
+        for specie in self.species:
+            children.append(specie.champion.clone())
+
+        # filling open player slots with children
+        children_per_species = math.floor(
+            (self.size - len(self.species)) // len(self.species)
+        )
+        for specie in self.species:
+            for i in range(0, children_per_species):
+                children.append(specie.offspring())
+        
+        while len(children) < self.size:
+            children.append(self.species[0].offspring())
+
+        self.players = []
+        for child in children:
+            self.players.append(child)
+        self.generation += 1
+
     # return true if all players are dead
     def extinct(self):
         extinct = True
