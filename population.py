@@ -35,6 +35,19 @@ class Population:
         print("CHILDREN FOR NEXT GEN")
         self.next_gen()
     
+    def speciate(self):
+        for specie in self.species:
+            specie.players = []
+
+        for player in self.players:
+            add_to_species = False
+            for specie in self.species:
+                if specie.similarity(player.brain):
+                    specie.add_to_species = True
+                    break
+            if not add_to_species:
+                self.species.append(species.Species(player))
+    
     # return true if all players are dead
     def extinct(self):
         extinct = True
