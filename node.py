@@ -18,3 +18,9 @@ class Node:
             self.output_value = sigmoid(self.input_value)
         for i in range(0, len(self.connections)):
             self.connections[i].to_node.input_value += self.connections[i].weight * self.output_value
+
+    def clone(self):
+        clone = Node(self.id)
+        clone.id = self.id
+        clone.layer = self.layer
+        return clone
