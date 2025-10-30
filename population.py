@@ -81,9 +81,9 @@ class Population:
                 else:
                     specie.staleness = 0
         for player in player_bin:
-            self.player.remove(player)
+            self.players.remove(player)
         for specie in species_bin:
-            self.species.remove(species)
+            self.species.remove(specie)
     
     def sort_species_by_fitness(self):
         for specie in self.species:
