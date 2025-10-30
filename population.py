@@ -32,6 +32,9 @@ class Population:
         print("KILL EXTINCT")
         self.kill_extinct_species()
 
+        print("KILL STALE")
+        self.kill_stale_species()
+
         print("SORT BY FITNESS")
         self.sort_species_by_fitness()
 
@@ -65,6 +68,22 @@ class Population:
                 species_bin.append(specie)
         for specie in species_bin:
             self.species.remove(specie)
+    
+    def kill_stale_species(self):
+        player_bin = []
+        species_bin = []
+        for specie in self.species:
+            if specie.staleness >= 8:
+                if len(self.species) > len(species_bin) + 1:
+                    species_bin.append(specie)
+                    for player in specie.players:
+                        player_bin.append(player)
+                else:
+                    specie.staleness = 0
+        for player in player_bin:
+            self.player.remove(player)
+        for specie in species_bin:
+            self.species.remove(species)
     
     def sort_species_by_fitness(self):
         for specie in self.species:
