@@ -29,6 +29,9 @@ class Population:
         print("CALCULATE FITNESS")
         self.calculate_fitness()
 
+        print("KILL EXTINCT")
+        self.kill_extinct_species()
+
         print("SORT BY FITNESS")
         self.sort_species_by_fitness()
 
@@ -54,6 +57,14 @@ class Population:
             player.calculate_fitness()
         for specie in self.species:
             specie.calculate_average_fitness()
+
+    def kill_extinct_species(self):
+        species_bin = []
+        for specie in self.species:
+            if len(specie.players) == 0:
+                species_bin.append(specie)
+        for specie in species_bin:
+            self.species.remove(specie)
     
     def sort_species_by_fitness(self):
         for specie in self.species:
